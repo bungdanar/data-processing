@@ -13,6 +13,7 @@ err_df = clean_and_remove_duplicates(err_df)
 
 print({
     'Validation mode': res_time_df['Validation Mode'].iloc[0].split('=')[1],
+    'Total requests sent': len(res_time_df),
     'Total endpoint coverage': res_time_df['Path'].nunique(),
     'Total err endpoints': err_df['Path'].nunique(),
     'Total errors': len(err_df),
