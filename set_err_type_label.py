@@ -1,3 +1,4 @@
+import argparse
 from pprint import pprint
 from typing import TypedDict
 
@@ -68,6 +69,8 @@ def __generate_err_type_ref(log_type: str) -> list[dict]:
         ]
     elif log_type == 'python':
         pass
+    else:
+        pass
 
     return ref
 
@@ -127,13 +130,13 @@ def __generate_err_type_ref(log_type: str) -> list[dict]:
 # ]
 
 
-def __set_err_type_label():
+def __set_err_type_label(log_type: str):
     output_path = 'output/err_aggr.xlsx'
 
     df = get_err_aggr()
     df['err_type'] = __err_type_ref['unknown']
 
-    ref = __generate_err_type_ref('nodejs')
+    ref = __generate_err_type_ref(log_type)
 
     for re_and_type in ref:
         mask = (df['err_type'] == __err_type_ref['unknown'])
@@ -157,5 +160,17 @@ def __set_err_type_label():
     })
 
 
+def main():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('-l', '--log', type=str,
+                        help="Log type, either 'nodejs' or 'python'")
+
+    args = parser.parse_args()
+
+    log_type = str.lower(args.log)
+    __set_err_type_label(log_type)
+
+
 if __name__ == '__main__':
-    __set_err_type_label()
+    main()
