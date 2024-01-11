@@ -2,7 +2,7 @@ import os
 import shutil
 
 
-dir_list = ['aggr_err_data', 'err_data', 'res_data']
+dir_list = ['aggr_err_data', 'err_data', 'res_data', 'output']
 
 # Delete dirs
 for dir in dir_list:
