@@ -1,4 +1,5 @@
-from pandas import DataFrame
+import os
+import pandas as pd
 
 
 __regex_and_replacement_list = [
@@ -17,12 +18,12 @@ __regex_and_replacement_list = [
 ]
 
 
-def __remove_duplicates(df: DataFrame, columns: list[str]) -> DataFrame:
+def __remove_duplicates(df: pd.DataFrame, columns: list[str]) -> pd.DataFrame:
     return df.drop_duplicates(
         subset=columns).reset_index(drop=True)
 
 
-def clean_and_remove_duplicates(df: DataFrame) -> DataFrame:
+def clean_and_remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
     # Remove duplicates by Path and Err Message
     df = __remove_duplicates(df, ['Path', 'Err Message'])
 
@@ -35,3 +36,21 @@ def clean_and_remove_duplicates(df: DataFrame) -> DataFrame:
     df = __remove_duplicates(df, ['Path', 'Err Message'])
 
     return df
+
+
+def get_err_aggr() -> pd.DataFrame:
+    dir_path = 'aggr_err_data'
+
+    all_files = [file for file in os.listdir(dir_path)]
+
+    df_list: list[pd.DataFrame] = []
+    for file in all_files:
+        file_path = os.path.join(dir_path, file)
+        df = pd.read_csv(file_path, sep='#', names=[
+            'Log Level', 'Method', 'Path', 'Status Code', 'Validation Mode', 'Err Message'])
+        df_list.append(df)
+
+    df_aggr = pd.concat(df_list, ignore_index=True)
+    df_aggr = clean_and_remove_duplicates(df_aggr)
+
+    return df_aggr
