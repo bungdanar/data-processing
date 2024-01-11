@@ -68,66 +68,75 @@ def __generate_err_type_ref(log_type: str) -> list[dict]:
             },
         ]
     elif log_type == 'python':
-        pass
+        ref = [
+            # missing_required
+            {
+                'pattern': 'cannot be null',
+                'type': __err_type_ref['missing_required']
+            },
+            {
+                'pattern': 'object is not subscriptable',
+                'type': __err_type_ref['missing_required']
+            },
+            {
+                'pattern': r"^msg=('tags'|'category'|'categories'|'coupons'|'address'|'addresses'|'product'|'shipping')$",
+                'type': __err_type_ref['missing_required']
+            },
+            {
+                'pattern': 'invalid keyword argument for',
+                'type': __err_type_ref['missing_required']
+            },
+            # invalid_type
+            {
+                'pattern': r'incorrect .*? value',
+                'type': __err_type_ref['invalid_type']
+            },
+            {
+                'pattern': r"MySQL server version for the right syntax to use near '\)",
+                'type': __err_type_ref['invalid_type']
+            },
+            {
+                'pattern': 'is not None, True, or False',
+                'type': __err_type_ref['invalid_type']
+            },
+            {
+                'pattern': r'argument after \*\* must be a mapping',
+                'type': __err_type_ref['invalid_type']
+            },
+            {
+                'pattern': 'object is not iterable',
+                'type': __err_type_ref['invalid_type']
+            },
+            {
+                'pattern': 'unhashable type',
+                'type': __err_type_ref['invalid_type']
+            },
+            {
+                'pattern': 'indices must be',
+                'type': __err_type_ref['invalid_type']
+            },
+            {
+                'pattern': 'Not a boolean value',
+                'type': __err_type_ref['invalid_type']
+            },
+            # constraint_violation
+            {
+                'pattern': 'check constraint',
+                'type': __err_type_ref['constraint_violation']
+            },
+            {
+                'pattern': 'out of range',
+                'type': __err_type_ref['constraint_violation']
+            },
+            {
+                'pattern': 'data too long',
+                'type': __err_type_ref['constraint_violation']
+            },
+        ]
     else:
         pass
 
     return ref
-
-# regex_and_type_list = [
-#     {
-#         'pattern': 'check constraint',
-#         'type': err_type_ref['constraint_violation']
-#     },
-#     {
-#         'pattern': 'out of range',
-#         'type': err_type_ref['constraint_violation']
-#     },
-#     {
-#         'pattern': 'data too long',
-#         'type': err_type_ref['constraint_violation']
-#     },
-#     {
-#         'pattern': 'msg=notnull violation',
-#         'type': err_type_ref['missing_required']
-#     },
-#     {
-#         'pattern': r'msg=.*? properties of undefined',
-#         'type': err_type_ref['missing_required']
-#     },
-#     {
-#         'pattern': 'cannot be null',
-#         'type': err_type_ref['missing_required']
-#     },
-#     {
-#         'pattern': 'msg=string violation',
-#         'type': err_type_ref['invalid_type']
-#     },
-#     {
-#         'pattern': r'incorrect .*? value',
-#         'type': err_type_ref['invalid_type']
-#     },
-#     {
-#         'pattern': r'msg=.*? is not a function',
-#         'type': err_type_ref['invalid_type']
-#     },
-#     {
-#         'pattern': r'msg=.*? properties of null',
-#         'type': err_type_ref['invalid_type']
-#     },
-#     {
-#         'pattern': 'is not subscriptable',
-#         'type': err_type_ref['invalid_type']
-#     },
-#     {
-#         'pattern': 'unhashable type',
-#         'type': err_type_ref['invalid_type']
-#     },
-#     {
-#         'pattern': r'argument after \*\* must be a mapping',
-#         'type': err_type_ref['invalid_type']
-#     },
-# ]
 
 
 def __set_err_type_label(log_type: str):
