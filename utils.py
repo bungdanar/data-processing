@@ -14,6 +14,14 @@ __regex_and_replacement_list = [
     {
         'regex': r'boolean value:(.*?)$',
         'replacement': 'boolean value:'
+    },
+    {
+        'regex': r'Value .*? is not None, True, or False',
+        'replacement': 'Value is not None, True, or False'
+    },
+    {
+        'regex': r"MySQL server version for the right syntax to use near '\)(.*?)at line 1\"\)$",
+        'replacement': "MySQL server version for the right syntax to use near"
     }
 ]
 

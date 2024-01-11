@@ -92,7 +92,7 @@ def __generate_err_type_ref(log_type: str) -> list[dict]:
                 'type': __err_type_ref['invalid_type']
             },
             {
-                'pattern': r"MySQL server version for the right syntax to use near '\)",
+                'pattern': "MySQL server version for the right syntax to use near",
                 'type': __err_type_ref['invalid_type']
             },
             {
