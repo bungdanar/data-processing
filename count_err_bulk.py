@@ -23,6 +23,8 @@ def main():
 
     for file in all_files:
         file_path = os.path.join(dir_path, file)
+        output_path = f'output/{file}.xlsx'
+
         df = pd.read_csv(file_path, sep='#', names=[
             'Log Level', 'Method', 'Path', 'Status Code', 'Validation Mode', 'Err Message'])
 
@@ -35,6 +37,8 @@ def main():
         missing_count = err_type_setter.get_missing_count()
         invalid_count = err_type_setter.get_invalid_count()
         constraint_count = err_type_setter.get_constraint_count()
+
+        df.to_excel(output_path, index=False)
 
         pprint({
             'Filename': file,
