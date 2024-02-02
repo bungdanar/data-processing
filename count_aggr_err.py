@@ -16,6 +16,9 @@ if total_err > 0:
     else:
         validation_mode = df_aggr['Validation Mode'].iloc[0].split('=')[1]
 
+output_path = f'output/aggr_err.xlsx'
+df_aggr.to_excel(output_path, index=False)
+
 print({
     'Validation mode': validation_mode,
     'Total errors': total_err,
