@@ -57,7 +57,7 @@ def clean_and_remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def get_err_aggr() -> pd.DataFrame:
-    dir_path = 'aggr_err_data'
+    dir_path = 'err_data'
 
     all_files = [file for file in os.listdir(dir_path)]
 
