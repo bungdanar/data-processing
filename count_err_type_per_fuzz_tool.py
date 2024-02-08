@@ -17,7 +17,7 @@ def main():
 
     log_type = str.lower(args.log)
 
-    dir_path = 'aggr_err_data'
+    dir_path = 'err_data'
 
     all_files = [file for file in os.listdir(dir_path)]
 
