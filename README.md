@@ -43,4 +43,4 @@ For example, you have performed fuzzing using two different tools and want to kn
 1. Run command `python clean_data_dirs.py` again (if necessary) to get clean input directories.
 2. Copy and paste one or more `err500.log` files into the `err_data` directory.
 3. The next step is run command `python count_err_type_per_fuzz_tool.py`. When running this command you must include the argument `-l` or `--log` with value `nodejs` or `python`, depending on where the log comes from. For example `python count_err_type_per_fuzz_tool.py -l nodejs`.
-4. It will show the information of error type for each fuzzing tool.
+4. It will show the information of error type for each file log.
