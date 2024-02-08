@@ -30,3 +30,10 @@ For example, you have performed fuzzing using two different tools and want to kn
 1.	Run command `python clean_data_dirs.py` again (if necessary) to get clean input directories.
 2.	Copy and paste one or more `res-time.log` files into the `res_data` directory.
 3.	Run command `python count_res_per_val_lib.py`.
+
+## How to count the number of total requests and endpoint coverage for each fuzzing tool
+
+1.	Run command `python clean_data_dirs.py` again (if necessary) to get clean input directories.
+2.	Copy and paste one or more `res-time.log` files into the `res_data` directory.
+3.	Run command `python count_req_per_fuzz_tool.py`.
+4.	It will show the number of total requests and endpoint coverage for each file log.
