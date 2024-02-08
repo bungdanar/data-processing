@@ -8,24 +8,25 @@ and [Python REST Fuzzing](https://github.com/bungdanar/python-rest-fuzzing) appl
 1.	Install Python version 3.11 or higher.
 2.	Clone this repository.
 3.	Run command `pip install -r requirements.txt`.
-4.	Run command `python clean_data_dirs.py` to create the input directories `err_data`, `aggr_err_data`, and `res_data`.
+4.	Run command `python clean_data_dirs.py` to create the input directories `err_data` and `res_data`.
 
-## How to count the number of unique errors
+## How to count the number of unique errors for each fuzzing tool
 
 1.	Run command `python clean_data_dirs.py` again (if necessary) to get clean input directories.
-2.	Copy and paste the `err500.log` and `res-time.log` files into the `err_data` directory. Please note that the file names must still be `err500.log` and `res-time.log`.
-3.	Run command `python count_err.py`.
+2.	Copy and paste one or more `err500.log` files into the `err_data` directory.
+3.	Run command `python count_err_per_fuzz_tool.py`.
+4.	It will show the number of unique errors for each file log.
 
-## How to count the number of unique aggregate errors
+## How to count the number of unique aggregate errors for each validation library
 
 This script is used to count the number of unique errors from several `err500.log` files. 
 For example, you have performed fuzzing using two different tools and want to know the number of unique errors found by the two fuzzing tools.
 1.	Run command `python clean_data_dirs.py` again (if necessary) to get clean input directories.
-2.	Copy and paste one or more `err500.log` files into the `aggr_err_data` directory. Please note that there are no special requirements regarding naming the `err500.log` file.
-3.	Run command `python count_aggr_err.py`.
+2.	Copy and paste one or more `err500.log` files into the `err_data` directory.
+3.	Run command `python count_err_per_val_lib.py`.
 
-## How to calculate the average response time
+## How to calculate the average response time for each validation library
 
 1.	Run command `python clean_data_dirs.py` again (if necessary) to get clean input directories.
-2.	Copy and paste one or more `res-time.log` files into the `res_data` directory. Please note that there are no special requirements regarding naming the `res-time.log` file.
-3.	Run command `python count_avg_res.py`.
+2.	Copy and paste one or more `res-time.log` files into the `res_data` directory.
+3.	Run command `python count_res_per_val_lib.py`.
